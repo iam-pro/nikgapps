@@ -33,10 +33,10 @@ jobs:
         working-directory: build
         run: |
           python3 config_control.py 12.1
-          ls "/home/runner/work/nikgapps/nikgapps/Releases/12.1" -sh
+          ls -sh
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: "NikGapps-error-arm64-12.1-20220715.zip"
-          path: /home/runner/work/nikgapps/nikgapps/Releases/
+          path: build
