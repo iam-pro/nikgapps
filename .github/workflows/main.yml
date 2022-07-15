@@ -18,7 +18,7 @@ jobs:
           sudo apt update
           sudo apt -y install aapt
           python3 -m pip install wheel setuptools testresources
-          git clone https://github.com/iam-pro/nik-build.git --depth=1
+          git clone https://github.com/iam-pro/nik-build.git --depth=1 build
           pip3 install -r build/requirements.txt
           git clone https://github.com/iam-pro/config.git --depth=1
           cd build
