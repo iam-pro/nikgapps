@@ -1,0 +1,32 @@
+name: Nik
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Setup Build Environment
+        run: |
+          sudo apt update
+          sudo apt -y install aapt
+          python3 -m pip install wheel setuptools testresources
+          git clone https://github.com/iam-pro/nik-build.git --depth=1
+          pip3 install -r build/requirements.txt
+          git clone https://github.com/iam-pro/config.git --depth=1
+          cd build
+          python3 config_control.py 12.1
+          ls build
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          # Artifact name
+          name: "NikGapps-error-arm64-12.1-20220715.zip"
+          path: build/
