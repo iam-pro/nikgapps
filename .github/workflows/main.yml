@@ -18,15 +18,22 @@ jobs:
           sudo apt update
           sudo apt -y install aapt
           python3 -m pip install wheel setuptools testresources
+      
+      - name: Clone Nikgapps stuffs
           git clone https://github.com/iam-pro/nik-build.git --depth=1 build
-          pip3 install -r build/requirements.txt
           git clone https://github.com/iam-pro/config.git --depth=1
-          cd build
+      
+      - name: Install nikgapps dependencies
+        working-directory: build
+        run: |
+          pip3 install -r build/requirements.txt
+      
+      - name: Build NikGapps
+        working-directory: build
           python3 config_control.py 12.1
-          ls
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          # Artifact name
           name: "NikGapps-error-arm64-12.1-20220715.zip"
-          path: build/
+          path: /home/runner/work/nikgapps/nikgapps/Releases/
