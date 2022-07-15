@@ -23,7 +23,7 @@ jobs:
           git clone https://github.com/iam-pro/config.git --depth=1
           cd build
           python3 config_control.py 12.1
-          ls build
+          ls
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
