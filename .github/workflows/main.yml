@@ -20,6 +20,7 @@ jobs:
           python3 -m pip install wheel setuptools testresources
       
       - name: Clone Nikgapps stuffs
+        run: |
           git clone https://github.com/iam-pro/nik-build.git --depth=1 build
           git clone https://github.com/iam-pro/config.git --depth=1
       
@@ -30,6 +31,7 @@ jobs:
       
       - name: Build NikGapps
         working-directory: build
+        run: |
           python3 config_control.py 12.1
 
       - name: Upload a Build Artifact
