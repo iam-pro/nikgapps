@@ -27,7 +27,7 @@ jobs:
       - name: Install nikgapps dependencies
         working-directory: build
         run: |
-          pip3 install -r build/requirements.txt
+          pip3 install -r requirements.txt
       
       - name: Build NikGapps
         working-directory: build
