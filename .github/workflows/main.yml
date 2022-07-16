@@ -18,6 +18,7 @@ jobs:
           git clone https://github.com/iam-pro/config.git --depth=1
 
       - name: Setup Build Environment
+        working-directory: build
         run: |
           sudo apt update
           sudo apt -y install aapt
