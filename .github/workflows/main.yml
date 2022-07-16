@@ -12,10 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Clone Nikgapps stuffs
+      - name: Clone Nikgapps stuffs and Setup config
         run: |
           git clone https://github.com/iam-pro/nik-build.git --depth=1 build
           git clone https://github.com/iam-pro/config.git --depth=1
+          if [ -f "*.config" ]; then
+            rm -rf config/$ANDROID_VERSION/*.config
+            cp *.config config/$ANDROID_VERSION/*.config
+          fi
+          #if $ANDROID_VERSION
 
       - name: Setup Build Environment
         working-directory: build
