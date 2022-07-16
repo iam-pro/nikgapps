@@ -10,29 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Build Environment
-        run: |
-          sudo apt update
-          sudo apt -y install aapt
-          python3 -m pip install wheel setuptools testresources
+      - uses: actions/checkout@v2
       
       - name: Clone Nikgapps stuffs
         run: |
           git clone https://github.com/iam-pro/nik-build.git --depth=1 build
           git clone https://github.com/iam-pro/config.git --depth=1
-      
-      - name: Install nikgapps dependencies
-        working-directory: build
+
+      - name: Setup Build Environment
         run: |
-          pip3 install -r requirements.txt
-      
+          sudo apt update
+          sudo apt -y install aapt
+          sudo python3 -m pip install wheel setuptools testresources
+          sudo pip3 install -r requirements.txt
+
       - name: Build NikGapps
         working-directory: build
         run: |
           python3 config_control.py 12.1
-          ls -sh
+          ls "/home/runner/work/nikgapps/nikgapps/Releases/12.1/" -sh
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
