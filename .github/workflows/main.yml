@@ -37,5 +37,5 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: "NikGapps-error-arm64-12.1-20220715.zip"
-          path: /home/runner/work/nikgapps/nikgapps/Releases/12.1
+          name: "NikGapps-error-arm64-12.1-20220716.zip"
+          path: /home/runner/work/nikgapps/nikgapps/Releases/12.1/NikGapps-error-arm64-12.1-20220716.zip
